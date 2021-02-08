@@ -22,6 +22,12 @@ The purpose is to:
 WIP - at the moment it just compiles and links
 
 
+# Project configuration notes
+To get OpenGL references to compile and link need to:
+* set XR_USE_GRAPHICS_API_OPENGL as a preprocessor symbol 
+* add opengl32.lib
+* add externals/gfxwrapper and it's associated utils
+
 # Building
 The OpenXR library needs to be built in two steps
 1. cmake to build the solution:
