@@ -82,6 +82,9 @@ void init(bool do_openxr)
 		XrInstanceCreateInfo createInfo{ XR_TYPE_INSTANCE_CREATE_INFO };
 		strcpy(createInfo.applicationInfo.applicationName, "HelloXrAndVr");
 		createInfo.applicationInfo.apiVersion = XR_CURRENT_API_VERSION;
+		const char *extensions = "XR_KHR_opengl_enable";
+		createInfo.enabledExtensionCount = 1;
+		createInfo.enabledExtensionNames = &extensions;
 
 		CHECK_XRCMD(xrCreateInstance(&createInfo, &g_xr_state.m_instance));
 
