@@ -21,6 +21,10 @@ The purpose is to:
 # Status
 WIP - at the moment it just compiles and links
 
+# References
+* OpenVR: https://github.com/ValveSoftware/openvr/tree/master/samples/hellovr_opengl
+* OpenXR: https://github.com/KhronosGroup/OpenXR-SDK-Source/tree/master/src/tests/hello_xr
+
 
 # Project configuration notes
 To get OpenGL references to compile and link need to:
@@ -43,6 +47,11 @@ In it's own instance of Visual studio, open up
     build solution
     to create submodules\OpenXR-SDK-build\src\loader\Debug\openxr_loaderd.lib
  
+# Running on Windows
+1. Both openxr and openvr mode use the steamvr backend.  So 
+   1.1 Connect your headset, turn on your trackers
+   1.2 Start SteamVR from Steam. 
+2.   
 
 
 
