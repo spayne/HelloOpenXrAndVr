@@ -32,5 +32,8 @@
     <ClInclude Include="check_macros.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="xr_linear.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

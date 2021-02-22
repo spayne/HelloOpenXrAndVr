@@ -46,6 +46,13 @@ inline std::string Fmt(const char* fmt, ...) {
 	throw std::runtime_error("Unexpected vsnprintf failure");
 }
 
+
+template <typename T, size_t Size>
+constexpr size_t ArraySize(const T(&/*unused*/)[Size]) noexcept {
+	return Size;
+}
+
+
 [[noreturn]] inline void Throw(std::string failureMessage, const char* originator = nullptr, const char* sourceLocation = nullptr) {
 	if (originator != nullptr) {
 		failureMessage += Fmt("\n    Origin: %s", originator);
@@ -69,10 +76,18 @@ inline XrResult CheckXrResult(XrResult res, const char* originator = nullptr, co
 }
 
 #define THROW(msg) Throw(msg, nullptr, FILE_AND_LINE);
+#define CHECK(exp)                                      \
+    {                                                   \
+        if (!(exp)) {                                   \
+            Throw("Check failed", #exp, FILE_AND_LINE); \
+        }                                               \
+    }
 #define CHK_STRINGIFY(x) #x
 #define TOSTRING(x) CHK_STRINGIFY(x)
 #define FILE_AND_LINE __FILE__ ":" TOSTRING(__LINE__)
+#define THROW_XR(xr, cmd) ThrowXrResult(xr, #cmd, FILE_AND_LINE);
 #define CHECK_XRCMD(cmd) CheckXrResult(cmd, #cmd, FILE_AND_LINE);
+#define CHECK_XRRESULT(res, cmdStr) CheckXrResult(res, cmdStr, FILE_AND_LINE);
 
 
 
